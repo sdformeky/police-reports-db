@@ -1,8 +1,11 @@
 # Police Reports DB
 
-A Dart console application that stores police reports in a SQLite database. The project is split into domain models and a data layer that uses the repository pattern.
+A database of police reports, implemented twice:
 
-**Stack:** Dart 3 · SQLite (`sqlite3` package) · `path`
+- **Dart console app** (repository root): stores the data in SQLite, with domain models and a data layer built on the repository pattern.
+- **Web app** ([`web/`](#web-version-nodejs--postgresql)): a REST API on Node.js, Express and PostgreSQL, plus an HTML/JS frontend.
+
+**Stack:** Dart 3 · SQLite · Node.js · Express · PostgreSQL (`pg`) · vanilla JS
 
 ## Database schema
 
@@ -47,3 +50,32 @@ dart run bin/main.dart
 ```
 
 The database file is created at `data/police_base.db`.
+
+---
+
+## Web version (Node.js + PostgreSQL)
+
+```
+web/
+├── backend/
+│   ├── server.js     # Express app: mounts the routes, serves the frontend at /frontend
+│   ├── db.js         # PostgreSQL connection pool, settings from .env
+│   └── routes/       # One router per table
+└── frontend/         # A page and a script per table, using fetch() against the API
+```
+
+- **REST API:** list, add, update and delete endpoints for applicants, reports, employees, departments, passports, submission methods, articles, time/place records, report-article links and users.
+- **Validation:** required fields are checked, and the API answers `400` when one is missing.
+- **Queries:** all of them are parameterized (`$1, $2, …`), which protects against SQL injection.
+- **Frontend:** plain HTML/CSS/JS pages with a table and an add/edit form for each entity.
+
+### Running
+
+```bash
+cd web/backend
+cp .env.example .env      # fill in your PostgreSQL connection details
+npm install
+node server.js            # http://localhost:3000/frontend/index.html
+```
+
+The PostgreSQL schema for this version extends the SQLite one: applicants get extra fields and there is a `users` table. The schema file is not included yet.

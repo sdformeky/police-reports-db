@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Applicants</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+<h1>APPLICANTS</h1>
+<a href="index.html">← BACK</a>
+</header>
+
+<main>
+
+<div class="cards-container">
+
+<div class="card special">
+
+<h3>ADD APPLICANT</h3>
+
+<input id="user_id" placeholder="user_id">
+<input id="first_name" placeholder="first_name">
+<input id="middle_name" placeholder="middle_name">
+<input id="surname_name" placeholder="surname_name">
+<input id="birth_date" type="date">
+<input id="res_address" placeholder="res_address">
+<input id="email" placeholder="email">
+<input id="phone_number" placeholder="phone_number">
+
+<button onclick="addApplicant()">ADD</button>
+<button onclick="loadApplicants()">LOAD</button>
+
+</div>
+
+</div>
+
+<div class="cards-container" id="list"></div>
+
+</main>
+
+<script src="applicants.js"></script>
+
+</body>
+</html>

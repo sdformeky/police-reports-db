@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Time Place</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+<h1>TIME PLACE</h1>
+<a href="index.html">← BACK</a>
+</header>
+
+<main>
+
+<div class="cards-container">
+
+<div class="card special">
+
+<h3>ADD TIME PLACE</h3>
+
+<input id="violence_time" type="time">
+<input id="violence_date" type="date">
+<input id="violence_place" placeholder="violence_place">
+
+<button onclick="addTimePlace()">ADD</button>
+<button onclick="loadTimePlace()">LOAD</button>
+
+</div>
+
+</div>
+
+<div class="cards-container" id="list"></div>
+
+</main>
+
+<script src="time_place.js"></script>
+
+</body>
+</html>

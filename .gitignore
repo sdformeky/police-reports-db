@@ -4,3 +4,7 @@
 
 # local database created on run
 data/
+
+# web version
+node_modules/
+.env
